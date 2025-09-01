@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: POS
+  datasource:
+    url: jdbc:mariadb://localhost:3306/Pos
+    username: root
+    password: Password1@
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+jwt:
+  secret: 97bb51bb9d064ad6b220954c5d585f14a09d598df64c2c48e1ae24607cd3b0e0
+  expiration: 3600000
