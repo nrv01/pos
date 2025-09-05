@@ -1,4 +1,4 @@
-package org.pos.pos.Services.Implementation;
+package org.pos.pos.Services.Impl;
 
 import org.pos.pos.Repositories.UserRepository;
 import org.springframework.security.core.userdetails.User;
@@ -6,8 +6,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
