@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<UserResponse> getAllUsers(String searchTerm, Pageable pageable) {
-        return userRepository.findByNameContainingAndSurnameContaining(searchTerm, searchTerm, pageable)
+        return userRepository.searchByFullnameAndEmail(searchTerm, pageable)
                 .map(userMapper::toResponse);
     }
 
