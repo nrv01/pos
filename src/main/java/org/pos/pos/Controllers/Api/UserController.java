@@ -1,8 +1,10 @@
 package org.pos.pos.Controllers.Api;
 
+import org.pos.pos.Dto.Common.ApiResponse;
 import org.pos.pos.Dto.Common.BaseResponse;
 import org.pos.pos.Dto.User.UserRegistrationRequest;
 import org.pos.pos.Dto.User.UserResponse;
+import org.pos.pos.Exceptions.EmailAlreadyTakenException;
 import org.pos.pos.Services.Interfaces.UserService;
 import org.pos.pos.Validations.Groups.ValidationGroups.OnCreateGroup;
 import org.springframework.data.domain.Page;
@@ -28,16 +30,18 @@ class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> store(@RequestBody @Validated(OnCreateGroup.class) UserRegistrationRequest request) {
+    public ResponseEntity<ApiResponse<UserResponse>> store(@RequestBody @Validated(OnCreateGroup.class) UserRegistrationRequest request) {
         var userCreated = userService.createUser(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(userCreated);
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                ApiResponse.success("Usuario creado exitosamente", userCreated)
+        );
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<BaseResponse> delete(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse> delete(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.status(HttpStatus.OK).body(
-                new BaseResponse(true, "Eliminado correctamente")
+                ApiResponse.success("Usuario eliminado correctamente", null)
         );
     }
 }

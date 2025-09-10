@@ -6,4 +6,5 @@ public class GenericErrorMessages {
     public static final String NOT_FOUND = "El recurso solicitado no fue encontrado.";
     public static final String DUPLICATE = "El recurso ya existe.";
     public static final String UNAUTHORIZED = "No tiene permisos para realizar esta acción.";
+    public static final String EMAIL_CONFLICT = "El correo electrónico ingresado ya esta en uso";
 }
