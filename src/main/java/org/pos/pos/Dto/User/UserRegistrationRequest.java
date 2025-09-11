@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.pos.pos.Validations.Annotations.SecurePassword;
 import org.pos.pos.Validations.Groups.ValidationGroups;
 import org.pos.pos.Validations.Groups.ValidationGroups.OnCreateGroup;
@@ -14,6 +15,7 @@ import org.pos.pos.Validations.Groups.ValidationGroups.OnCreateGroup;
 @Data
 @AllArgsConstructor
 @NotBlank
+@NoArgsConstructor
 public class UserRegistrationRequest {
 
     @Email(message = "El e-mail debe tener un formato válido.")

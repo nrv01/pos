@@ -40,16 +40,16 @@ public class UserController {
     }
 
 
-    @PutMapping
-    public ResponseEntity<ApiResponse<UserResponse>> update(@RequestBody @Validated(OnUpdateGroup.class) UserRegistrationRequest request) {
+    @PostMapping
+    public ResponseEntity<ApiResponse<UserResponse>> create(@RequestBody @Validated(OnCreateGroup.class) UserRegistrationRequest request) {
         var userCreated = userService.createUser(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 ApiResponse.success("Usuario creado exitosamente", userCreated)
         );
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<ApiResponse<UserResponse>> store(@PathVariable Long id, @RequestBody @Validated(OnCreateGroup.class) UserRegistrationRequest request) {
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<UserResponse>> update(@PathVariable Long id, @RequestBody @Validated(OnUpdateGroup.class) UserRegistrationRequest request) {
         var userUpdated = userService.updateUser(id, request);
         return ResponseEntity.status(HttpStatus.OK).body(
                 ApiResponse.success("Usuario actualizado exitosamente", userUpdated)
